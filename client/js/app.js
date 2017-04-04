@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-  .module('yoyoTestApp', [
+  .module('apiOrgApp', [
     'lbServices',
     'app.filters',
     'app.router',
