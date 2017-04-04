@@ -1,0 +1,6 @@
+body {
+  padding-top: 50px
+}
+.glyphicon-remove:hover, input[type="checkbox"] {
+  cursor: pointer
+}

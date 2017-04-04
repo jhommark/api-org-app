@@ -1,0 +1,68 @@
+<h1>Todo list</h1>
+<hr>
+<button class="btn btn-primary" data-toggle="modal" data-target="#add-todo" ng-click="vm.todo.entry = '';">Add <span class="glyphicon glyphicon-plus"></span></button><br><br>
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="todo in vm.todos">
+    <input type="checkbox" ng-model="todo.isDone" ng-change="vm.update(todo)">
+    &nbsp; {{ todo.entry }} &nbsp;
+    <span class="pull-right">
+      <button class="btn btn-primary btn-xs" ng-click="vm.transfer(todo)"><span class="glyphicon glyphicon-transfer"></span></button>&nbsp;
+      <button class="btn btn-warning btn-xs" ng-click="vm.edit(todo)" data-toggle="modal" data-target="#edit-todo"><span class="glyphicon glyphicon-edit"></span></button>&nbsp;
+      <button class="btn btn-danger btn-xs" ng-click="vm.delete(todo)"><span class="glyphicon glyphicon-trash"></span></button>
+    </span>
+  </li>
+</ul>
+<!-- Add Modal -->
+<div class="modal fade" id="add-todo" tabindex="-1" role="dialog" aria-labelledby="addModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="POST" name="addItem" class="form-horizontal" role="form" ng-submit="vm.add()" novalidate>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="addModal">Add Todo</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Entry:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="entry" autocomplete="off" ng-model="vm.todo.entry" required/>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" ng-disabled="addItem.$invalid" class="btn btn-primary">Submit</button>
+          <i ng-show="vm.loading" class="fa fa-spinner fa-spin"></i>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Edit Modal -->
+<div class="modal fade" id="edit-todo" tabindex="-1" role="dialog" aria-labelledby="editModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form method="POST" name="editItem" class="form-horizontal" role="form" ng-submit="vm.saveEdit()" novalidate>
+        <input ng-model="vm.form.id" type="hidden"/>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="editModal">Edit Todo</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Entry:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="entry" autocomplete="off" ng-model="vm.form.entry" required/>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" ng-disabled="editItem.$invalid" class="btn btn-primary">Submit</button>
+          <i ng-show="vm.loading" class="fa fa-spinner fa-spin"></i>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
