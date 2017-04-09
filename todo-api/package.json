@@ -24,6 +24,8 @@
   "devDependencies": {
     "bower": "^1.5.2",
     "jshint": "^2.5.6",
+    "loopback-sdk-angular": "github:qeti/loopback-sdk-angular#188-angular2-support",
+    "loopback-sdk-angular-cli": "github:qeti/loopback-sdk-angular-cli#37-angular2-support",
     "tape": "^4.2.0"
   },
   "repository": {
