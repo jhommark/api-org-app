@@ -1,0 +1,78 @@
+<h1>Note list</h1>
+<hr>
+<button class="btn btn-primary" data-toggle="modal" data-target="#add-note" (click)="note.title = ''; note.text = '';">Add <span class="glyphicon glyphicon-plus"></span></button><br><br>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let note of notes">
+    {{ note.title }} - {{ note.text }} &nbsp;
+    <span class="pull-right">
+      <button class="btn btn-primary btn-xs" (click)="transfer(note)"><span class="glyphicon glyphicon-transfer"></span></button>&nbsp;
+      <button class="btn btn-warning btn-xs" (click)="edit(note)" data-toggle="modal" data-target="#edit-note"><span class="glyphicon glyphicon-edit"></span></button>&nbsp;
+      <button class="btn btn-danger btn-xs" (click)="delete(note)"><span class="glyphicon glyphicon-trash"></span></button>
+    </span>
+  </li>
+</ul>
+<!-- Add Modal -->
+<!--div class="modal fade" id="add-note" tabindex="-1" role="dialog" aria-labelledby="addModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="POST" name="addItem" class="form-horizontal" role="form" (submit)="add()" novalidate>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="addModal">Add Note</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Title:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="title" autocomplete="off" [(ngModel)]="note.title" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Text:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="text" autocomplete="off" [(ngModel)]="note.text"/>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" [disabled]="addItem.$invalid" class="btn btn-primary">Submit</button>
+          <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+        </div>
+      </form>
+    </div>
+  </div>
+</div-->
+<!-- Edit Modal -->
+<!--div class="modal fade" id="edit-note" tabindex="-1" role="dialog" aria-labelledby="editModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form method="POST" name="editItem" class="form-horizontal" role="form" (submit)="saveEdit()" novalidate>
+        <input [(ngModel)]="form.id" type="hidden"/>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="editModal">Edit Note</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Title:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="title" autocomplete="off" [(ngModel)]="form.title" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Text:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="text" autocomplete="off" [(ngModel)]="form.text">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" [disabled]="editItem.$invalid" class="btn btn-primary">Submit</button>
+          <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+        </div>
+      </form>
+    </div>
+  </div>
+</div-->
